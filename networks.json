@@ -1,0 +1,8 @@
+{
+  "zksync-era-sepolia": {
+    "Contract": {
+      "address": "0xf46725B1aD707D6B7D5add3889C97856888a17D7",
+      "startBlock": 1579811
+    }
+  }
+}

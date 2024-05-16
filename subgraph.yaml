@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Contract
+    network: zksync-era-sepolia
+    source:
+      address: "0xf46725B1aD707D6B7D5add3889C97856888a17D7"
+      abi: Contract
+      startBlock: 1579811
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NewReport
+        - NewStakeAmount
+        - NewStaker
+        - ReporterSlashed
+        - StakeWithdrawRequested
+        - StakeWithdrawn
+        - ValueRemoved
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: NewReport(indexed bytes32,indexed uint256,bytes,uint256,bytes,indexed address)
+          handler: handleNewReport
+        - event: NewStakeAmount(uint256)
+          handler: handleNewStakeAmount
+        - event: NewStaker(indexed address,indexed uint256)
+          handler: handleNewStaker
+        - event: ReporterSlashed(indexed address,address,uint256)
+          handler: handleReporterSlashed
+        - event: StakeWithdrawRequested(address,uint256)
+          handler: handleStakeWithdrawRequested
+        - event: StakeWithdrawn(address)
+          handler: handleStakeWithdrawn
+        - event: ValueRemoved(bytes32,uint256)
+          handler: handleValueRemoved
+      file: ./src/contract.ts

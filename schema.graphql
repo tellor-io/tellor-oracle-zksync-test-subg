@@ -1,0 +1,65 @@
+type NewReport @entity(immutable: true) {
+  id: Bytes!
+  _queryId: Bytes! # bytes32
+  _time: BigInt! # uint256
+  _value: Bytes! # bytes
+  _nonce: BigInt! # uint256
+  _queryData: Bytes! # bytes
+  _reporter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewStakeAmount @entity(immutable: true) {
+  id: Bytes!
+  _newStakeAmount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NewStaker @entity(immutable: true) {
+  id: Bytes!
+  _staker: Bytes! # address
+  _amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReporterSlashed @entity(immutable: true) {
+  id: Bytes!
+  _reporter: Bytes! # address
+  _recipient: Bytes! # address
+  _slashAmount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakeWithdrawRequested @entity(immutable: true) {
+  id: Bytes!
+  _staker: Bytes! # address
+  _amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StakeWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  _staker: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ValueRemoved @entity(immutable: true) {
+  id: Bytes!
+  _queryId: Bytes! # bytes32
+  _timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
